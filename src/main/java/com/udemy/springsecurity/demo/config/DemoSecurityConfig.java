@@ -18,7 +18,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			//.anyRequest().authenticated()
 			.antMatchers("/").hasRole("EMPLOYEE")
-			.antMatchers("/leaders/**").hasRole("MANAGERS")
+			.antMatchers("/leaders/**").hasRole("MANAGER")
 			.antMatchers("/systems/**").hasRole("ADMIN")
 			.and()
 			.formLogin()
@@ -39,8 +39,8 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		auth.inMemoryAuthentication()
 			.withUser(users.username("john").password("test123").roles("EMPLOYEE"))
-			.withUser(users.username("mary").password("test123").roles("EMPLOYEE","MANAGER"))
-			.withUser(users.username("susan").password("test123").roles("EMPLOYEE","ADMIN"));
+			.withUser(users.username("mary").password("test").roles("EMPLOYEE","MANAGER"))
+			.withUser(users.username("admin").password("admin").roles("EMPLOYEE","ADMIN"));
 
 		
 		
